@@ -1,8 +1,8 @@
 package com.ll.domain.wiseSaying.wiseSaying.controller
 
-import com.ll.Rq
 import com.ll.domain.wiseSaying.wiseSaying.entity.WiseSaying
 import com.ll.domain.wiseSaying.wiseSaying.service.WiseSayingService
+import com.ll.global.rq.Rq
 
 class WiseSayingController {
     private var lastId = 0
