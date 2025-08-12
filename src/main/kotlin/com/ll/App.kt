@@ -11,8 +11,9 @@ class App {
 
             val input = readlnOrNull()!!.trim()
 
-            if (input == "종료") break
-            else if (input == "등록"){
+            val rq = Rq(input)
+            if(rq.action == "종료") break
+            else if(rq.action == "등록") {
                 print("명언) ")
                 val content = readlnOrNull()!!.trim()
                 print("작가) ")
@@ -23,7 +24,7 @@ class App {
 
                 println("${id}번 명언이 등록되었습니다.")
             }
-            else if (input =="목록"){
+            else if (rq.action =="목록"){
                 if(wiseSayings.isEmpty()){
                     println("등록된 명언이 없습니다.")
                     continue
@@ -34,7 +35,17 @@ class App {
                 wiseSayings.forEach{
                     println("${it.id}/ ${it.author} / ${it.content}")
                 }
-
+            }
+            else if (rq.action == "삭제") {
+                val id = rq.getParamValueAsInt("id", 0)
+                if (id ==0 ){
+                    println("id를 정확히 입력해주세요.")
+                    continue
+                }
+                wiseSayings.removeIf {
+                    it.id == id
+                }
+                println("${id}번 명언을 삭제하였습니다.")
             }
         }
     }
